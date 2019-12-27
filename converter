@@ -1,0 +1,32 @@
+def bin_to_dec(conversion,value):
+
+    #for decimal conversion
+    if(conversion == 'decimal'):
+        decimal, i = 0, 0
+        while (value != 0):
+            dec = value % 10
+            decimal = decimal + dec * pow(2, i)
+            value = value // 10
+            i += 1
+        print("Output>> ",decimal)
+
+    #for binary conversion
+    elif(conversion == 'binary'):
+        print("Output>> ",bin(value).replace("0b",""))
+        
+    else:
+        print("Something went wrong")
+
+
+#warnings
+print()
+print("===========================================================")
+print("Convert: Binary to Decimal || OR || Decimal to Binary ")
+print("keywords(lower case only): binary or decimal")
+print("===========================================================")
+print()
+
+#Function Calling
+conversion = input("Convert in >>")
+x = int(input("Enter Value >>"))
+bin_to_dec(conversion,x)
