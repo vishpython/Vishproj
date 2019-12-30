@@ -1,32 +1,72 @@
-def bin_to_dec(conversion,value):
+#This programme is designed by Vivek sharma
+#for any help drop a mail at: meetviveksharma198@yahoo.com
 
-    #for decimal conversion
-    if(conversion == 'decimal'):
+
+def convert_fun(type):
+
+    #decimal to Binary, octal and hexadecimal
+    if(type == 'decimal'):
+        value = int(input("Enter %s Value>> " % type))
+        print("===========================================================")
+        print("Output>>")
+        print("Binary Value>> ",bin(value).replace("0b",""))
+        print("Octal Value>> ",oct(value).replace("0o",""))
+        print("hexadecimal Value>> ",hex(value).replace("0x",""))
+
+    #Binary to deciaml, octal and hexdecimal
+    elif(type == 'binary'):
+        value = int(input("Enter %s Value>> " % type))
         decimal, i = 0, 0
         while (value != 0):
             dec = value % 10
             decimal = decimal + dec * pow(2, i)
             value = value // 10
             i += 1
-        print("Output>> ",decimal)
+        print("===========================================================")
+        print("Output>>")
+        print("Decimal Value>> ",decimal)
+        print("Octal Value>> ",oct(decimal).replace("0o",""))
+        print("hexadecimal Value>> ",hex(decimal).replace("0x",""))
 
-    #for binary conversion
-    elif(conversion == 'binary'):
-        print("Output>> ",bin(value).replace("0b",""))
-        
+    #Octalt to binary,decimal and hexdecimal
+    elif(type == 'octal'):
+        value = int(input("Enter %s Value>> " % type))
+        dec_value = 0
+        base = 1
+        temp = value
+        while (temp):
+            # Extracting last digit
+            last_digit = temp % 10
+            temp = int(temp / 10)
+            dec_value += last_digit * base
+
+            base = base * 8
+        print("===========================================================")
+        print("Output>>")
+        print("Decimal Value>> ",dec_value)
+        print("Binary Value>> ",bin(dec_value).replace("0b",""))
+        print("hexadecimal Value>> ",hex(dec_value).replace("0x",""))
+
+    #hexadecimal to decimal, octal and binary
+    elif(type == 'hexadecimal'):
+        value = input("Enter %s Value>> " % type)
+        res = int(str(value), 16)
+        print("===========================================================")
+        print("Output>>")
+        print("Decimal Value>> ",res)
+        print("Binary Value>> ",bin(res).replace("0b",""))
+        print("Octal Value>> ",oct(res).replace("0o",""))
     else:
-        print("Something went wrong")
+        print("Something went wrong,please check value type or value!!")
 
 
-#warnings
+# Menu
 print()
-print("===========================================================")
-print("Convert: Binary to Decimal || OR || Decimal to Binary ")
-print("keywords(lower case only): binary or decimal")
-print("===========================================================")
+print("Alert:: All characters should be in lowercase!!")
+print("----------------------------------------------------------")
+print("Convert: binary||octal||hexadecimal||decimal ")
+print("-----------------------------------------------------------")
 print()
 
-#Function Calling
-conversion = input("Convert in >>")
-x = int(input("Enter Value >>"))
-bin_to_dec(conversion,x)
+type = input("Value Type(You have)>> ")
+convert_fun(type)
